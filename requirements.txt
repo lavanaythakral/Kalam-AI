@@ -1,0 +1,11 @@
+gpt-2-simple
+transformers
+yake
+torch
+pandas
+nltk==7.1.2
+sklearn
+SpeechRecognition
+PyAudio
+spacy
+tensorflow==1.15.2
