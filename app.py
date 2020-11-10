@@ -1,12 +1,14 @@
 # import flask
+import tensorflow as tf
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering, BertForNextSentencePrediction, BertTokenizer
 from fetch_google import *
 # from fetch_context import *
 from qnautils import *
 from speech2text import *
 import gpt_2_simple as gpt2
-import tensorflow as tf
-
+from improvutils import *
+import re
+from termcolor import colored
 sess = gpt2.start_tf_sess()
 gpt2.load_gpt2(sess, run_name='run1_topical_token')
 
@@ -27,16 +29,24 @@ words = {'science' : 'positive'}
 # app = flask.Flask(__name__, template_folder='templates')
 # @app.route('/')
 def main():
-    # return(flask.render_template('main.html'))
+		# return(flask.render_template('main.html'))
 	df = get_data()
-	query = audio()
-	# context = get_context_from_data(query,df)
+	query = "When did you start liking science?"
+	# query = "When did you start liking science?"
+	context = get_context_from_data(query,df)
 	# print(context)
-	# answers = Fetching_answers([query],df,model,tokenizer)
+	answers = Fetching_answers([query],df,model,tokenizer)
 	answers = phase_one_end([query],df,model,tokenizer)
-	GPT2_generation = regeneration("When did you start liking science?",words,model_nsp,tokenizer_nsp,sess)
+	if(answers[0] == 'GPT2'):
+		GPT2_generation = regeneration(query,words,model_nsp,tokenizer_nsp,sess)
+		print(GPT2_generation)
+		return GPT2_generation
+	else:
+		print(answers[0])
+		return answers[0]
+	# print(colored(GPT2_generation,"green"))
 	# lsprint(answers)
 
 if __name__ == '__main__':
-    # app.run()
-    main()
+		# app.run()
+		main()
