@@ -6,7 +6,6 @@ pandas
 nltk==7.1.2
 sklearn
 SpeechRecognition
-PyAudio
 spacy
 librosa==0.7.0
 numpy==1.17.1
@@ -15,3 +14,7 @@ opencv-python==4.1.0.25
 torchvision==0.3.0
 tqdm==4.45.0
 numba==0.48
+gtts
+playsound
+pyttsx3
+PyAudio
