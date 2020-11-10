@@ -9,7 +9,7 @@ from sklearn.preprocessing import normalize
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 import spacy
 nlp = spacy.load("en_core_web_sm")
-
+from fetch_google import *
 
 def get_data():
   df = pd.read_csv('WOF_split_into_sentences.csv')
