@@ -9,6 +9,9 @@ import gpt_2_simple as gpt2
 from improvutils import *
 import re
 from termcolor import colored
+import pyttsx3
+from text2speech import *
+
 sess = gpt2.start_tf_sess()
 gpt2.load_gpt2(sess, run_name='run1_topical_token')
 
@@ -31,22 +34,25 @@ words = {'science' : 'positive'}
 def main():
 		# return(flask.render_template('main.html'))
 	df = get_data()
-	query = "When did you start liking science?"
+	query = audio()
 	# query = "When did you start liking science?"
 	context = get_context_from_data(query,df)
 	# print(context)
 	answers = Fetching_answers([query],df,model,tokenizer)
 	answers = phase_one_end([query],df,model,tokenizer)
-	if(answers[0] == 'GPT2'):
+	improv_return = ""
+	if(answers[0] == 'GPT2' or answers[0] == 'PASS'):
 		GPT2_generation = regeneration(query,words,model_nsp,tokenizer_nsp,sess)
 		print(GPT2_generation)
-		return GPT2_generation
+		improv_return = GPT2_generation
 	else:
 		print(answers[0])
-		return answers[0]
+		improv_return = answers[0]
 	# print(colored(GPT2_generation,"green"))
 	# lsprint(answers)
-
+	t2s(improv_return)
+	return t2s
+	
 if __name__ == '__main__':
 		# app.run()
 		main()
