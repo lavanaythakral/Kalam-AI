@@ -4,29 +4,11 @@ import speech_recognition as sr
 def audio():
 	r = sr.Recognizer()
 	text = ""
-
-	with sr.Microphone() as source:
-		print("Talk")
-		audio_text = r.listen(source)
-		print("Time over, thanks")
-		try:
-			# using google speech recognition
-			text = r.recognize_google(audio_text)
-			print("Text: "+ text)
-
-			# with open("conversation.csv","a") as f:
-			# 	writer = csv.writer(f)
-			# 	writer.writerow([text])
-		except:
-			print("Sorry, I did not get that")
+	filename = "/content/Kalam-AI/recording.wav"
+	with sr.AudioFile(filename) as source:
+		# listen for the data (load audio to memory)
+		audio_data = r.record(source)
+		# recognize (convert from speech to text)
+		text = r.recognize_google(audio_data)
+		print(text)
 	return text
-
-# def main():
-# 	with open("conversation.csv","w") as f:
-# 		writer = csv.writer(f)
-# 		writer.writerow(["Conversation"])
-
-# 	audio()
-
-# if __name__== "__main__":
-# 	main()
