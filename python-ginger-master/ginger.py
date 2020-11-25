@@ -129,7 +129,7 @@ def main():
 
             # Colorize text
             colored_incorrect = ColoredText.colorize(original_text[from_index:to_index], 'red')[0]
-            colored_suggest, gap = ColoredText.colorize(suggest, 'green')
+            colored_suggest, gap = ColoredText.colorize(suggest)
 
             original_text = original_text[:from_index] + colored_incorrect + original_text[to_index:]
             fixed_text = fixed_text[:from_index-fixed_gap] + colored_suggest + fixed_text[to_index-fixed_gap:]
