@@ -34,7 +34,11 @@ border-radius: 5px;
 background-color:  #f2f2f2;
 padding: 20px;
 }
-.center { margin: 0 auto; width: 400px; }
+.center {
+margin-left: auto;
+margin-right: auto;
+display: block
+}
 </style>
 </head>
 <body>
@@ -48,15 +52,18 @@ padding: 20px;
 </div>
 <h2>Response :  <span id="polarity"><span></h2>
 <h2>{{message}}</h2>
-<video id = "video1" width="320" height="240" controls autoplay onended="run()">
+<div>
+<video class = "center" id = "video1" width="320" height="240" controls autoplay onended="run()">
     <source src={{ url_for("static", filename="result_voice.mp4") }} type="video/mp4">
     Your browser does not support the video tag.
   </video>
-
-  <video id = "video2" width="320" height="240" controls autoplay muted loop>
+</div>
+<div>
+  <video class = "center" id = "video2" width="320" height="240" controls autoplay muted loop>
     <source src={{ url_for("static", filename="down_2.mp4") }} type="video/mp4">
     Your browser does not support the video tag.
   </video>
+    </div>
   <script> 
 $( "#video2" ).hide();
 function run(){
