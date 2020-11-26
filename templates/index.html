@@ -7,6 +7,7 @@
 <!-- Web Application Manifest -->
 <link rel="manifest" href='data:application/manifest+json,{ "name": "Flask App", "short_name": "Flask App", "display": "standalone" }' />
 <style>
+h2 {text-align: center;}
 body {font-family: Arial, Helvetica, sans-serif;
 background-color:   #e6ecff;}
 * {box-sizing: border-box;}
@@ -53,8 +54,8 @@ display: block
 <h2>I am listening intently!  <span id="polarity"><span></h2>
 <h2>{{message}}</h2>
 <div>
-<video class = "center" width="320" height="240" controls autoplay muted loop>
-    <source src={{ url_for("static", filename="down_2.mp4") }} type="video/mp4">
+<video class = "center" width="420" height="340" controls autoplay muted loop>
+    <source src={{ url_for("static", filename="Kalam_listening_crop.mp4") }} type="video/mp4">
     Your browser does not support the video tag.
   </video>
     </div>
