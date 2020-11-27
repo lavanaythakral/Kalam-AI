@@ -20,4 +20,5 @@ playsound
 pyttsx3
 scipy
 ffmpeg-python
-PyAudio
+flask
+flask_ngrok
